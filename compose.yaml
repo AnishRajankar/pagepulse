@@ -1,0 +1,16 @@
+services:
+  pagepulse:
+    build: .
+    ports:
+      - '3000:3000'
+    env_file: .env
+    environment:
+      DATA_DIR: /app/data
+      PORT: 3000
+    volumes:
+      - pagepulse-data:/app/data
+    shm_size: '512mb'
+    init: true
+    restart: unless-stopped
+volumes:
+  pagepulse-data:
